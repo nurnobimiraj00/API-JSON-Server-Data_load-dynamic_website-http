@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>who i am</title>
+</head>
+
+<body>
+    <h2 id="naam">Name</h2>
+    <script>
+        function whoIAm(){
+            fetch('https://randomuser.me/api/')
+            .then(res => res.json())
+            .then(deta => {
+                const user = deta.results[0];
+                const name = user.name;
+                const fullName = `${name.title} ${name.first} ${name.last}`
+                document.getElementById("naam").innerText = fullName;
+            })
+        }
+        whoIAm();
+        setInterval(()=>{
+            whoIAm();
+        },3000);
+    </script>
+</body>
+
+</html>
